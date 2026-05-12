@@ -3622,3 +3622,12 @@ span#Huratips-Pagination a {
     border-radius: 5px;
     display: inline-block;
 }
+span.featured-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #e30e20;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
