@@ -151,6 +151,9 @@
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
           >
+          {%- if card_product.tags contains "featured" -%}
+          <span class="featured-label">Featured</span>
+          {%- endif -%}
             <a
               href="{{ card_product.url }}"
               id="CardLink-{{ section_id }}-{{ card_product.id }}"
