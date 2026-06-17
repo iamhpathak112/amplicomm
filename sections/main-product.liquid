@@ -682,6 +682,36 @@
           </a>
         </section>
       </div>
+      <div class="sticky-atc">
+  <div class="sticky-atc__product">
+    <img src="{{ product.featured_image | image_url: width: 100 }}">
+    
+    <div>
+      <h4>{{ product.title }}</h4>
+      <span class="price">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </span>
+    </div>
+  </div>
+
+  <select id="sticky-variant">
+    {% for variant in product.variants %}
+      <option value="{{ variant.id }}">
+        {{ variant.title }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <div class="qty-wrapper">
+    <button type="button" class="qty-minus">-</button>
+    <input type="number" value="1" min="1" id="sticky-qty">
+    <button type="button" class="qty-plus">+</button>
+  </div>
+
+  <button class="sticky-add-cart">
+    Add To Cart
+  </button>
+</div>
     </div>
 
     {% render 'product-media-modal', variant_images: variant_images %}
