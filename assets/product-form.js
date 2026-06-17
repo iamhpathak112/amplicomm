@@ -140,3 +140,28 @@ if (!customElements.get('product-form')) {
     }
   );
 }
+
+document.querySelector('.sticky-add-cart')
+.addEventListener('click', function() {
+
+  const variantId =
+    document.getElementById('sticky-variant').value;
+
+  const quantity =
+    document.getElementById('sticky-qty').value;
+
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: variantId,
+      quantity: quantity
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log('Added', data);
+  });
+});
