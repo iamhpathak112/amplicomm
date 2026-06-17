@@ -165,3 +165,35 @@ document.querySelector('.sticky-add-cart')
     console.log('Added', data);
   });
 });
+
+fetch('/cart/add.js', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    id: variantId,
+    quantity: quantity
+  })
+})
+.then(response => response.json())
+.then(data => {
+  updateCartCount();
+});
+
+
+function updateCartCount() {
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+
+      const bubbles = document.querySelectorAll(
+        '.cart-count-bubble span'
+      );
+
+      bubbles.forEach(item => {
+        item.textContent = cart.item_count;
+      });
+
+    });
+}
